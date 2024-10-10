@@ -1,7 +1,17 @@
-// Initialize map
-let myMap = L.map("map", {
+var streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+});
+
+var satelliteMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});
+
+// Initialize the map
+var myMap = L.map('map', {
     center: [37.09, -95.71],
-    zoom: 5
+    zoom: 5,
+    layers: [streetMap] // Start with the street map
 });
 
 // Add a tile layer (the background map image) to our map
